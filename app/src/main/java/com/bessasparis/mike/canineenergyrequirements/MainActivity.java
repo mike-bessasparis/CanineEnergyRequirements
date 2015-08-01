@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
         int weight;
 
         EditText weightText = (EditText) findViewById(R.id.editWeightText);
-        weight = Integer.parseInt(weightText.getText().toString());
+        try {
+            weight = Integer.parseInt(weightText.getText().toString());
+        }
+        catch (NumberFormatException e) {
+            weight = 0;
+        }
 
         TextView NADERText = (TextView) findViewById(R.id.NeuteredAdultDERtextView);
         TextView IADERText = (TextView) findViewById(R.id.IntactAdultDERtextView);
