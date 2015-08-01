@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:onClick="updateDER"
+                android:textSize="14sp"
                 android:text="Calculate"/>
         </RelativeLayout>
 
@@ -46,35 +47,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adult Daily Energy Requirements"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/abc_text_size_title_material"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Basic"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/abc_text_size_subhead_material"/>
+
+    <Spinner
+        android:id="@+id/basic_factors_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/NeuteredAdultDERtextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/IntactAdultDERtextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        android:textSize="16sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gestation"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/abc_text_size_subhead_material"/>
 
     <TextView
         android:id="@+id/UpTo42DaysDERtextView"
@@ -92,8 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lactation"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/abc_text_size_subhead_material"/>
 
     <TextView
         android:id="@+id/OnePupDERtextView"
