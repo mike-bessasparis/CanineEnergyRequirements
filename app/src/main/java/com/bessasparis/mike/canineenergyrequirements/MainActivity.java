@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //input field is weight in pounds
         double weightInPounds;
 
-        //holds converted weight from punds to kilograms
+        //holds converted weight from pounds to kilograms
         double weightKG;
 
         EditText weightText = (EditText) findViewById(R.id.editWeightText);
