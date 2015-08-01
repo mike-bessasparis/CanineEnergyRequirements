@@ -22,32 +22,37 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateDER(View view) {
 
-        int weight;
+        //input field is weight in pounds
+        double weightInPounds;
+
+        //holds converted weight from punds to kilograms
+        double weightKG;
 
         EditText weightText = (EditText) findViewById(R.id.editWeightText);
         try {
-            weight = Integer.parseInt(weightText.getText().toString());
+            weightInPounds = Integer.parseInt(weightText.getText().toString());
+            weightKG = weightInPounds / 2.2; //convert from pounds to kilograms
         }
         catch (NumberFormatException e) {
-            weight = 0;
+            weightKG = 0;
         }
 
         TextView NADERText = (TextView) findViewById(R.id.NeuteredAdultDERtextView);
         TextView IADERText = (TextView) findViewById(R.id.IntactAdultDERtextView);
         NADERText.setText("Neutered: " +
-                calcAdultEnergyReq(weight, 0) +
+                calcAdultEnergyReq(weightKG, 0) +
                 " kcal");
         IADERText.setText("Intact: " +
-                calcAdultEnergyReq(weight, 1) +
+                calcAdultEnergyReq(weightKG, 1) +
                 " kcal");
 
         TextView UpTo42DERText = (TextView) findViewById(R.id.UpTo42DaysDERtextView);
         TextView After42DERText = (TextView) findViewById(R.id.After42DaysDERtextView);
         UpTo42DERText.setText("1-42 days: " +
-                calcAdultEnergyReq(weight, 2) +
+                calcAdultEnergyReq(weightKG, 2) +
                 " kcal");
         After42DERText.setText("43-63 days: " +
-                calcAdultEnergyReq(weight, 3) +
+                calcAdultEnergyReq(weightKG, 3) +
                 " kcal");
 
         TextView OnePupDERText = (TextView) findViewById(R.id.OnePupDERtextView);
@@ -57,35 +62,35 @@ public class MainActivity extends AppCompatActivity {
         TextView SevenEightPupDERText = (TextView) findViewById(R.id.SevenEightPupDERtextView);
         TextView NineOrMorePupDERText = (TextView) findViewById(R.id.NineOrMorePupDERtextView);
         OnePupDERText.setText("1 pup: " +
-                calcAdultEnergyReq(weight, 4) +
+                calcAdultEnergyReq(weightKG, 4) +
                 " kcal");
         TwoPupDERText.setText("2 pups: " +
-                calcAdultEnergyReq(weight, 5) +
+                calcAdultEnergyReq(weightKG, 5) +
                 " kcal");
         ThreeFourPupDERText.setText("3-4 pups: " +
-                calcAdultEnergyReq(weight, 6) +
+                calcAdultEnergyReq(weightKG, 6) +
                 " kcal");
         FiveSixPupDERText.setText("5-6 pups: " +
-                calcAdultEnergyReq(weight, 7) +
+                calcAdultEnergyReq(weightKG, 7) +
                 " kcal");
         SevenEightPupDERText.setText("7-8 pups: " +
-                calcAdultEnergyReq(weight, 8) +
+                calcAdultEnergyReq(weightKG, 8) +
                 " kcal");
         NineOrMorePupDERText.setText("9 or more pups: " +
-                calcAdultEnergyReq(weight, 9) +
+                calcAdultEnergyReq(weightKG, 9) +
                 " kcal");
 
 
     }
 
-    private double calcRER(int weightKG) {
+    private double calcRER(double weightKG) {
         return Math.pow(weightKG, .75) * 70;
     }
 
     //repro, neutered==0, intact==1
     //gestation, < 42 days==2, >42 days==3
     //lactation, 1 pup==4, 2pup==5, 3-4pup=6, 5-6pup==7, 7-8pup==8, >9==9
-    private int calcAdultEnergyReq(int weightKG, int type) {
+    private int calcAdultEnergyReq(double weightKG, int type) {
         int e = 0;
         switch (type) {
             //adult neutered

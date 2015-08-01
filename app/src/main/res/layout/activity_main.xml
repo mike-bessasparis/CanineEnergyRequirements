@@ -16,25 +16,29 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weight (kg):"
+        android:text="Weight(lbs):"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/editWeightText"
             android:textSize="16sp"
+            android:ems="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="Body weight in kg"
             android:imeOptions="actionDone"
             android:inputType="number"/>
 
-        <Button
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="updateDER"
-            android:text="Calculate"/>
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="updateDER"
+                android:text="Calculate"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
