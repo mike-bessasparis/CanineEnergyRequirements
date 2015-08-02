@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
             weightKG = 0;
         }
 
-        TextView NADERText = (TextView) findViewById(R.id.NeuteredAdultDERtextView);
-        TextView IADERText = (TextView) findViewById(R.id.IntactAdultDERtextView);
-        NADERText.setText("Neutered: " +
-                calcAdultEnergyReq(weightKG, 0) +
-                " kcal");
-        IADERText.setText("Intact: " +
-                calcAdultEnergyReq(weightKG, 1) +
-                " kcal");
+//        TextView NADERText = (TextView) findViewById(R.id.NeuteredAdultDERtextView);
+//        TextView IADERText = (TextView) findViewById(R.id.IntactAdultDERtextView);
+//        NADERText.setText("Neutered: " +
+//                calcAdultEnergyReq(weightKG, 0) +
+//                " kcal");
+//        IADERText.setText("Intact: " +
+//                calcAdultEnergyReq(weightKG, 1) +
+//                " kcal");
 
         TextView UpTo42DERText = (TextView) findViewById(R.id.UpTo42DaysDERtextView);
         TextView After42DERText = (TextView) findViewById(R.id.After42DaysDERtextView);
