@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 
@@ -21,13 +22,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void updateDER(View view) {
+    public void onBasicRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
 
-        //input field is weight in pounds
-        double weightInPounds;
+        TextView AdultDERText = (TextView) findViewById(R.id.BasicAdultDERtextView);
 
-        //holds converted weight from pounds to kilograms
-        double weightKG;
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_basic_neutered:
+                if (checked)
+                    AdultDERText.setText("DER: " +
+                            calcAdultEnergyReq(getWeightKG(), 0) +
+                            " kcal");
+
+                break;
+            case R.id.radio_basic_intact:
+                if (checked)
+                    AdultDERText.setText("DER: " +
+                            calcAdultEnergyReq(getWeightKG(), 1) +
+                            " kcal");
+
+                break;
+        }
+    }
+
+    private double getWeightKG() {
+        double weightInPounds, weightKG;
 
         EditText weightText = (EditText) findViewById(R.id.editWeightText);
         try {
@@ -37,52 +59,55 @@ public class MainActivity extends AppCompatActivity {
         catch (NumberFormatException e) {
             weightKG = 0;
         }
-
-        TextView NADERText = (TextView) findViewById(R.id.NeuteredAdultDERtextView);
-        TextView IADERText = (TextView) findViewById(R.id.IntactAdultDERtextView);
-        NADERText.setText("Neutered: " +
-                calcAdultEnergyReq(weightKG, 0) +
-                " kcal");
-        IADERText.setText("Intact: " +
-                calcAdultEnergyReq(weightKG, 1) +
-                " kcal");
-
-        TextView UpTo42DERText = (TextView) findViewById(R.id.UpTo42DaysDERtextView);
-        TextView After42DERText = (TextView) findViewById(R.id.After42DaysDERtextView);
-        UpTo42DERText.setText("1-42 days: " +
-                calcAdultEnergyReq(weightKG, 2) +
-                " kcal");
-        After42DERText.setText("43-63 days: " +
-                calcAdultEnergyReq(weightKG, 3) +
-                " kcal");
-
-        TextView OnePupDERText = (TextView) findViewById(R.id.OnePupDERtextView);
-        TextView TwoPupDERText = (TextView) findViewById(R.id.TwoPupDERtextView);
-        TextView ThreeFourPupDERText = (TextView) findViewById(R.id.ThreeFourPupDERtextView);
-        TextView FiveSixPupDERText = (TextView) findViewById(R.id.FiveSixPupDERtextView);
-        TextView SevenEightPupDERText = (TextView) findViewById(R.id.SevenEightPupDERtextView);
-        TextView NineOrMorePupDERText = (TextView) findViewById(R.id.NineOrMorePupDERtextView);
-        OnePupDERText.setText("1 pup: " +
-                calcAdultEnergyReq(weightKG, 4) +
-                " kcal");
-        TwoPupDERText.setText("2 pups: " +
-                calcAdultEnergyReq(weightKG, 5) +
-                " kcal");
-        ThreeFourPupDERText.setText("3-4 pups: " +
-                calcAdultEnergyReq(weightKG, 6) +
-                " kcal");
-        FiveSixPupDERText.setText("5-6 pups: " +
-                calcAdultEnergyReq(weightKG, 7) +
-                " kcal");
-        SevenEightPupDERText.setText("7-8 pups: " +
-                calcAdultEnergyReq(weightKG, 8) +
-                " kcal");
-        NineOrMorePupDERText.setText("9 or more pups: " +
-                calcAdultEnergyReq(weightKG, 9) +
-                " kcal");
-
-
+        return weightKG;
     }
+
+//    public void updateDER(View view) {
+//
+//        //input field is weight in pounds
+//        double weightInPounds;
+//
+//        //holds converted weight from pounds to kilograms
+//        double weightKG;
+//
+//        weightKG = getWeightKG();
+//
+//        TextView UpTo42DERText = (TextView) findViewById(R.id.UpTo42DaysDERtextView);
+//        TextView After42DERText = (TextView) findViewById(R.id.After42DaysDERtextView);
+//        UpTo42DERText.setText("1-42 days: " +
+//                calcAdultEnergyReq(weightKG, 2) +
+//                " kcal");
+//        After42DERText.setText("43-63 days: " +
+//                calcAdultEnergyReq(weightKG, 3) +
+//                " kcal");
+//
+//        TextView OnePupDERText = (TextView) findViewById(R.id.OnePupDERtextView);
+//        TextView TwoPupDERText = (TextView) findViewById(R.id.TwoPupDERtextView);
+//        TextView ThreeFourPupDERText = (TextView) findViewById(R.id.ThreeFourPupDERtextView);
+//        TextView FiveSixPupDERText = (TextView) findViewById(R.id.FiveSixPupDERtextView);
+//        TextView SevenEightPupDERText = (TextView) findViewById(R.id.SevenEightPupDERtextView);
+//        TextView NineOrMorePupDERText = (TextView) findViewById(R.id.NineOrMorePupDERtextView);
+//        OnePupDERText.setText("1 pup: " +
+//                calcAdultEnergyReq(weightKG, 4) +
+//                " kcal");
+//        TwoPupDERText.setText("2 pups: " +
+//                calcAdultEnergyReq(weightKG, 5) +
+//                " kcal");
+//        ThreeFourPupDERText.setText("3-4 pups: " +
+//                calcAdultEnergyReq(weightKG, 6) +
+//                " kcal");
+//        FiveSixPupDERText.setText("5-6 pups: " +
+//                calcAdultEnergyReq(weightKG, 7) +
+//                " kcal");
+//        SevenEightPupDERText.setText("7-8 pups: " +
+//                calcAdultEnergyReq(weightKG, 8) +
+//                " kcal");
+//        NineOrMorePupDERText.setText("9 or more pups: " +
+//                calcAdultEnergyReq(weightKG, 9) +
+//                " kcal");
+//
+//
+//    }
 
     private double calcRER(double weightKG) {
         return Math.pow(weightKG, .75) * 70;

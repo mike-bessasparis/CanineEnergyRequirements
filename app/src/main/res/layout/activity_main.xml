@@ -14,31 +14,31 @@
         android:layout_height="wrap_content">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight(lbs):"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight(lbs):"
+            android:textSize="@dimen/abc_text_size_title_material"/>
 
         <EditText
             android:id="@+id/editWeightText"
-            android:textSize="16sp"
-            android:ems="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ems="4"
             android:imeOptions="actionDone"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:textSize="@dimen/abc_text_size_title_material"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:onClick="updateDER"
-                android:text="Calculate"/>
-        </RelativeLayout>
+        <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:onClick="updateDER"-->
+                <!--android:text="Calculate"/>-->
+        <!--</RelativeLayout>-->
 
     </LinearLayout>
 
@@ -46,28 +46,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adult Daily Energy Requirements"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="@dimen/abc_text_size_title_material"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Basic"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/NeuteredAdultDERtextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basic"
+            android:textSize="@dimen/abc_text_size_title_material"/>
 
-    <TextView
-        android:id="@+id/IntactAdultDERtextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_basic_neutered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onBasicRadioButtonClicked"
+                    android:text="Neutered"
+                    android:textSize="@dimen/abc_text_size_subhead_material"/>
+
+                <RadioButton
+                    android:id="@+id/radio_basic_intact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onBasicRadioButtonClicked"
+                    android:text="Intact"
+                    android:textSize="@dimen/abc_text_size_subhead_material"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/BasicAdultDERtextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_gravity="center_vertical"
+                android:text="DER: "
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_title_material"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
