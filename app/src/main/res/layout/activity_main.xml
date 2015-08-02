@@ -9,6 +9,7 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               tools:context=".MainActivity">
 
+    <!--input weight layout -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -28,20 +29,9 @@
             android:inputType="number"
             android:textSize="@dimen/abc_text_size_title_material"/>
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:onClick="updateDER"-->
-                <!--android:text="Calculate"/>-->
-        <!--</RelativeLayout>-->
-
     </LinearLayout>
 
+    <!--  title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,11 +39,12 @@
         android:textSize="@dimen/abc_text_size_title_material"
         />
 
+    <!-- basic lifestyle/activity section-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,33 +82,66 @@
                 android:id="@+id/BasicAdultDERtextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="24dp"
                 android:text="DER: "
-                android:textStyle="bold"
-                android:textSize="@dimen/abc_text_size_title_material"/>
+                android:textSize="@dimen/abc_text_size_title_material"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gestation"
-        android:textSize="14sp"
-        android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/UpTo42DaysDERtextView"
-        android:layout_width="wrap_content"
+    <!-- gestation section -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/After42DaysDERtextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestation"
+            android:textSize="@dimen/abc_text_size_title_material"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/radioFirst42DaysGestation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onGestationRadioButtonClicked"
+                    android:text="First 42 days"
+                    android:textSize="@dimen/abc_text_size_subhead_material"/>
+                <RadioButton
+                    android:id="@+id/radioLast21DaysGestation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onGestationRadioButtonClicked"
+                    android:text="Last 21 days"
+                    android:textSize="@dimen/abc_text_size_subhead_material"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/GestationDERtextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="24dp"
+                android:text="DER: "
+                android:textSize="@dimen/abc_text_size_title_material"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"

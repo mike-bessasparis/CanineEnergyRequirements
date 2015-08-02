@@ -48,6 +48,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onGestationRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        TextView GestationDERText = (TextView) findViewById(R.id.GestationDERtextView);
+
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radioFirst42DaysGestation:
+                if (checked)
+                    GestationDERText.setText("DER: " +
+                            calcAdultEnergyReq(getWeightKG(), 2) +
+                            " kcal");
+
+                break;
+            case R.id.radioLast21DaysGestation:
+                if (checked)
+                    GestationDERText.setText("DER: " +
+                            calcAdultEnergyReq(getWeightKG(), 3) +
+                            " kcal");
+
+                break;
+        }
+    }
+
     private double getWeightKG() {
         double weightInPounds, weightKG;
 
@@ -62,24 +88,6 @@ public class MainActivity extends AppCompatActivity {
         return weightKG;
     }
 
-//    public void updateDER(View view) {
-//
-//        //input field is weight in pounds
-//        double weightInPounds;
-//
-//        //holds converted weight from pounds to kilograms
-//        double weightKG;
-//
-//        weightKG = getWeightKG();
-//
-//        TextView UpTo42DERText = (TextView) findViewById(R.id.UpTo42DaysDERtextView);
-//        TextView After42DERText = (TextView) findViewById(R.id.After42DaysDERtextView);
-//        UpTo42DERText.setText("1-42 days: " +
-//                calcAdultEnergyReq(weightKG, 2) +
-//                " kcal");
-//        After42DERText.setText("43-63 days: " +
-//                calcAdultEnergyReq(weightKG, 3) +
-//                " kcal");
 //
 //        TextView OnePupDERText = (TextView) findViewById(R.id.OnePupDERtextView);
 //        TextView TwoPupDERText = (TextView) findViewById(R.id.TwoPupDERtextView);
